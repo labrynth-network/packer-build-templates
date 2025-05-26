@@ -35,3 +35,20 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+
+
+# Ignore Packer variables and secrets
+**/*.pkrvars.hcl
+
+# Include Packer template files
+!**/*.TEMPLATE.pkrvars.hcl
+
+# Ignore Packer cache files
+**/.packer_cache
+
+# Ignore cloud-init files
+**/user-data
+
+# Include cloud-init templates
+!**/user-data.TEMPLATE
+!**/meta-data.TEMPLATE*
