@@ -1,1 +1,2 @@
-ssh_username = "ubuntu"
+ssh_username = "packer"
+ssh_password = "packer"

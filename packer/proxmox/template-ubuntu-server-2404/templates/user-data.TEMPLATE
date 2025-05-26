@@ -6,6 +6,8 @@ autoinstall:
     layout: us
   identity:
     hostname: ubuntu-server
+    username: packer
+    password: ""
   ssh:
     install-server: true
     allow-pw: true
@@ -39,16 +41,8 @@ autoinstall:
     package_upgrade: false
     timezone: UTC
     disable_root = true
-    users:
-      - name: template_user
-        groups: [adm, sudo]
-        lock-passwd: false
-        sudo: ALL=(ALL) NOPASSWD:ALL
-        shell: /bin/bash
-        ssh_authorized-keys:
-          - "ssh_public_key"
     late_commands:
-      - echo 'template_user ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/template_user
+      - echo 'packer ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/packer
       - chmod 440 /target/etc/sudoers.d/ubuntu
   # Force non-interactive installation
   interactive-sections: []

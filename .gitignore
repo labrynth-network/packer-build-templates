@@ -48,6 +48,7 @@ terraform.rc
 
 # Ignore cloud-init files
 **/user-data
+**/meta-data
 
 # Include cloud-init templates
 !**/user-data.TEMPLATE

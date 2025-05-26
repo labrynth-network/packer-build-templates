@@ -57,6 +57,12 @@ variable "ssh_username" {
     sensitive = true
 }
 
+variable "ssh_password" {
+    type = string
+    description = "SSH password for the VM"
+    sensitive = true
+}
+
 ## Source for VM template
 #########################
 source "proxmox-iso" "template-ubuntu-server-2404" {
@@ -138,9 +144,9 @@ source "proxmox-iso" "template-ubuntu-server-2404" {
         "<f10><wait>",
     ]
 
-    # Add SSH private key file
+    # Allow Packer to SSH into the VM to complete provisioning
     ssh_username = var.ssh_username
-    ssh_private_key_file = "~/.ssh/id_rsa"
+    ssh_password = var.ssh_password
 
     # Raise the timeout for SSH
     ssh_timeout = "30m"
@@ -166,12 +172,6 @@ build {
             "sudo rm -f /etc/netplain/00-installer-config.yaml",
             "sudo sync"
         ]
-    }
-
-    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
-    provisioner "file" {
-        source = "files/99-pve.cfg"
-        destination = "/tmp/99-pve.cfg"
     }
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #3
