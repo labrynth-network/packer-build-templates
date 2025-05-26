@@ -11,9 +11,9 @@ autoinstall:
   ssh:
     install-server: true
     allow-pw: true
-    disable_root: true
-    ssh_quiet_keygen
     allow_public_ssh_keys: true
+    disable_root: true
+    ssh_quiet_keygen: true
   packages:
     - qemu-guest-agent
     - sudo
@@ -40,7 +40,7 @@ autoinstall:
   user-data:
     package_upgrade: false
     timezone: UTC
-    disable_root = true
+    disable_root: true
     late_commands:
       - echo 'packer ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/packer
       - chmod 440 /target/etc/sudoers.d/ubuntu

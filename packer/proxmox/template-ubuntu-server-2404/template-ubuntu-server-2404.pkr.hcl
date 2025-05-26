@@ -33,12 +33,6 @@ variable "proxmox_node" {
     description = "Proxmox node where the VM will be created"
 }
 
-variable "vm_id" {
-    type = number
-    description = "Unique ID for the VM in Proxmox"
-    default = 802
-}
-
 variable "iso_file" {
     type = string
     description = "Path to the ISO file for the Ubuntu Server installation"
@@ -74,7 +68,7 @@ source "proxmox-iso" "template-ubuntu-server-2404" {
 
     # VM General Settings
     node = var.proxmox_node
-    vm_id = var.vm_id
+    vm_id = 802
     vm_name = "template-ubuntu-server-2404"
     template_description = "Packer Ubuntu Server template with SSH and base packages pre-configured"
 
