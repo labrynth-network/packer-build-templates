@@ -4,13 +4,9 @@ autoinstall:
   locale: en_US
   keyboard:
     layout: us
-  identity:
-    hostname: ubuntu-server
-    username: packer
-    password: ""
   ssh:
     install-server: true
-    allow-pw: true
+    allow-pw: false
     allow_public_ssh_keys: true
     disable_root: true
     ssh_quiet_keygen: true
@@ -38,11 +34,15 @@ autoinstall:
     swap:
       size: 0
   user-data:
+    disable_root: true
     package_upgrade: false
     timezone: UTC
-    disable_root: true
-    late_commands:
-      - echo 'packer ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/packer
-      - chmod 440 /target/etc/sudoers.d/ubuntu
+    users:
+      - name: packer
+        groups: sudo
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        shell: /bin/bash
+        ssh_authorized_keys:
+          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC3...your_public_key_here... user@host
   # Force non-interactive installation
   interactive-sections: []
