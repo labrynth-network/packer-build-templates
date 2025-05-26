@@ -1,14 +1,16 @@
-# cloud config
+# cloud-config
 autoinstall:
   version: 1
   locale: en_US
   keyboard:
     layout: us
+  identity:
+    hostname: ubuntu-server
   ssh:
     install-server: true
     allow-pw: true
     disable_root: true
-    ssh_quiet_keygen: true
+    ssh_quiet_keygen
     allow_public_ssh_keys: true
   packages:
     - qemu-guest-agent
@@ -36,6 +38,7 @@ autoinstall:
   user-data:
     package_upgrade: false
     timezone: UTC
+    disable_root = true
     users:
       - name: template_user
         groups: [adm, sudo]
@@ -44,3 +47,8 @@ autoinstall:
         shell: /bin/bash
         ssh_authorized-keys:
           - "ssh_public_key"
+    late_commands:
+      - echo 'template_user ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/template_user
+      - chmod 440 /target/etc/sudoers.d/ubuntu
+  # Force non-interactive installation
+  interactive-sections: []
