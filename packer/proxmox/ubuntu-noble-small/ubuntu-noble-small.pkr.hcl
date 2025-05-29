@@ -1,4 +1,4 @@
-## Ubuntu Server Noble (24.04.x) Template
+## Ubuntu Server Noble (24.04.x) Template - Small
 ################################################################################### 
 ## Packer Definition to create an Ubuntu Server (Noble 24.04.x) Template on Proxmox
 
@@ -41,7 +41,7 @@ variable "ssh_username" {
 
 ## Resource Definiation for the VM Template
 ###########################################
-source "proxmox-iso" "ubuntu-server-noble-light" {
+source "proxmox-iso" "ubuntu-noble-small" {
 
     # Proxmox Connection Settings
     proxmox_url = "${var.proxmox_api_url}"
@@ -52,8 +52,8 @@ source "proxmox-iso" "ubuntu-server-noble-light" {
     # VM General Settings
     node = "${var.proxmox_node}"
     vm_id = "802"
-    vm_name = "ubuntu-server-noble-light"
-    template_description = "Ubuntu Server Noble Template"
+    vm_name = "ubuntu-noble-small"
+    template_description = "Ubuntu Server (Noble 24.04.x) Template - Small"
 
     # VM OS Settings
     boot_iso {
@@ -125,8 +125,8 @@ source "proxmox-iso" "ubuntu-server-noble-light" {
 #############################################
 build {
 
-    name = "ubuntu-server-noble-light"
-    sources = ["source.proxmox-iso.ubuntu-server-noble-light"]
+    name = "ubuntu-noble-small"
+    sources = ["source.proxmox-iso.ubuntu-noble-small"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
