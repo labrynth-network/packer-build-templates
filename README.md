@@ -3,8 +3,5 @@
 Terraform infrastructure definitions and templates for various platforms.
 
 ```
-packer build -force \
- -var-file=variables.pkrvars.hcl \
- -var-file=../global.variables.pkrvars.hcl \
- template-ubuntu-server-2404.pkr.hcl
+packer build -force --var-file=../global.secrets.pkrvars.hcl --var-file=variables.pkrvars.hcl template-ubuntu-server-noble.pkr.hcl
 ```
