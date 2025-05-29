@@ -67,7 +67,7 @@ source "proxmox-iso" "ubuntu-noble-small" {
     qemu_agent = true
 
     # VM Hard Disk Settings
-    scsi_controller = "virtio-scsi-pci"
+    scsi_controller = "virtio-scsi-single"
 
     disks {
         disk_size = "10G"
@@ -93,7 +93,7 @@ source "proxmox-iso" "ubuntu-noble-small" {
 
     # VM Cloud-Init Settings
     cloud_init = true
-    cloud_init_storage_pool = "local"
+    cloud_init_storage_pool = "Proxmox-VMs"
 
     # Packer Boot Commands
     boot_command = [
