@@ -9,7 +9,7 @@ This repository contains Packer template definitions used to build base VM image
 ## Repository Structure
 
 ```
-├── Proxmox/
+├── proxmox/
 │   ├── ubuntu-noble-medium/		           # All files related to a VM template
 │   │   ├── files/ 				   # Config files to be copied into the VM during provisioning
 │   │   ├── templates/				   # Example files for configuring the template and build process
@@ -19,7 +19,7 @@ This repository contains Packer template definitions used to build base VM image
 │   │	│    └── variables.TEMPLATE.pkrvars.hcl
 │   │   └── ubuntu-noble-medium.pkr.hcl	           # Packer template definition
 │   └── global.secrets.TEMPLATE.pkrvars.hcl        # Global variables/secrets
-
+├── aws/
 ```
 
 ## Variables & Secrets Setup
