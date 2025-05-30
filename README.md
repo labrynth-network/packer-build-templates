@@ -64,6 +64,8 @@ ubuntu-noble-medium.pkr.hcl
 
 ## Available Templates
 
+### Proxmox
+
 <table>
   <tr>
 	  <th>Template Name</th>
