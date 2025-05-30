@@ -38,6 +38,14 @@ proxmox_api_token_secret =  "PROXMOX_API_TOKEN_SECRET"
 
 ## Building an Image
 
+### Initialize Template
+
+Navigate to the directory of the template you would like to build and run the following command:
+
+```bash
+packer init .
+```
+
 ### Validate Config
 
 A Packer config can be validated using the following command:
