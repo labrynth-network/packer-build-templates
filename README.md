@@ -10,15 +10,15 @@ This repository contains Packer template definitions used to build base VM image
 
 ```
 ├── Proxmox/
-│   ├── ubuntu-noble-medium/		# All files related to a VM template
-│   │   ├── files/ 					   # Config files to be copied into the VM during provisioning
+│   ├── ubuntu-noble-medium/		           # All files related to a VM template
+│   │   ├── files/ 				   # Config files to be copied into the VM during provisioning
 │   │   ├── templates/				   # Example files for configuring the template and build process
-│	│	│	├── meta-data.TEMPLATE
-│	│	│	├── user-data.TEMPLATE
-│	│	│	├── secrets.TEMPLATE.pkrvars.hcl
-│	│	│	└── variables.TEMPLATE.pkrvars.hcl
-│   │   └── ubuntu-noble-medium.pkr.hcl			    # Packer template definition
-│   └── global.secrets.TEMPLATE.pkrvars.hcl     # Global variables/secrets
+│   │	│    ├── meta-data.TEMPLATE
+│   │	│    ├── user-data.TEMPLATE
+│   │	│    ├── secrets.TEMPLATE.pkrvars.hcl
+│   │	│    └── variables.TEMPLATE.pkrvars.hcl
+│   │   └── ubuntu-noble-medium.pkr.hcl	           # Packer template definition
+│   └── global.secrets.TEMPLATE.pkrvars.hcl        # Global variables/secrets
 
 ```
 
@@ -38,6 +38,14 @@ proxmox_api_token_secret =  "PROXMOX_API_TOKEN_SECRET"
 
 ## Building an Image
 
+### Initialize Template
+
+Navigate to the directory of the template you would like to build and run the following command:
+
+```bash
+packer init .
+```
+
 ### Validate Config
 
 A Packer config can be validated using the following command:
@@ -54,7 +62,7 @@ ubuntu-noble-medium.pkr.hcl
 
 A Packer image can be built from the config using the following command:
 
-```
+```bash
 packer build \
 --var-file=../global.secrets.pkrvars.hcl \
 --var-file="variables.pkrvars.hcl" \
