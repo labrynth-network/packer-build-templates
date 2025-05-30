@@ -62,7 +62,7 @@ ubuntu-noble-medium.pkr.hcl
 
 A Packer image can be built from the config using the following command:
 
-```
+```bash
 packer build \
 --var-file=../global.secrets.pkrvars.hcl \
 --var-file="variables.pkrvars.hcl" \
