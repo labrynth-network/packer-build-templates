@@ -1,4 +1,4 @@
-## Ubuntu Server Noble (24.04.x) Template - Medium
+## Ubuntu Server Noble (24.04.x) Template - Large
 ################################################################################### 
 ## Packer Definition to create an Ubuntu Server (Noble 24.04.x) Template on Proxmox
 
@@ -62,7 +62,7 @@ variable "http_port" {
 
 ## Resource Definiation for the VM Template
 ###########################################
-source "proxmox-iso" "ubuntu-noble-medium" {
+source "proxmox-iso" "ubuntu-noble-large" {
 
     # Proxmox Connection Settings
     proxmox_url              = var.proxmox_api_url
@@ -72,9 +72,9 @@ source "proxmox-iso" "ubuntu-noble-medium" {
 
     # VM General Settings
     node                 = var.proxmox_node
-    vm_id                = "803"
-    vm_name              = "ubuntu-noble-medium"
-    template_description = "Ubuntu Server (Noble 24.04.x) Template - Medium"
+    vm_id                = "804"
+    vm_name              = "ubuntu-noble-large"
+    template_description = "Ubuntu Server (Noble 24.04.x) Template - Large"
 
     # VM OS Settings
     boot_iso {
@@ -91,7 +91,7 @@ source "proxmox-iso" "ubuntu-noble-medium" {
     scsi_controller = "virtio-scsi-single"
 
     disks {
-        disk_size    = "40G"
+        disk_size    = "60G"
         format       = "raw"
         storage_pool = "Proxmox-VMs"
         type         = "scsi"
@@ -103,7 +103,7 @@ source "proxmox-iso" "ubuntu-noble-medium" {
     cores   = "2"
 
     # VM Memory Settings
-    memory = "4096"
+    memory = "8192"
 
     # VM Network Settings
     network_adapters {
@@ -146,8 +146,8 @@ source "proxmox-iso" "ubuntu-noble-medium" {
 #############################################
 build {
 
-    name    = "ubuntu-noble-medium"
-    sources = ["source.proxmox-iso.ubuntu-noble-medium"]
+    name    = "ubuntu-noble-large"
+    sources = ["source.proxmox-iso.ubuntu-noble-large"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {

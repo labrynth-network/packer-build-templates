@@ -16,17 +16,19 @@ packer {
 variable "proxmox_api_url" {
     type = string
     description = "Proxmox API URL, e.g., https://proxmox.example.com:8006/api2/json"
+    sensitive = true
 }
 
 variable "proxmox_api_token_id" {
     type = string
-    description = "Proxmox API token ID, e.g., root@pam!Packer"
+    description = "Proxmox API token ID, e.g., root@pam!packer"
+    sensitive = true
 }
 
 variable "proxmox_api_token_secret" {
     type = string
-    sensitive = true
     description = "Proxmox API token secret"
+    sensitive = true
 }
 
 variable "proxmox_node" {
@@ -37,11 +39,25 @@ variable "proxmox_node" {
 variable "ssh_username" {
     type = string
     description = "SSH username for Packer SSH communicator"
+    default = "packer"
 }
 
 variable "ssh_private_key_file" {
     type = string
     description = "Path to the SSH private key file for Packer SSH communicator"
+    default = "~/.ssh/id_rsa"
+}
+
+variable "http_bind_address" {
+    type = string
+    description = "HTTP bind address for Packer HTTP server"
+    default = "0.0.0.0"
+}
+
+variable "http_port" {
+    type = number
+    description = "HTTP port for Packer HTTP server"
+    default = 8802
 }
 
 ## Resource Definiation for the VM Template
@@ -115,9 +131,10 @@ source "proxmox-iso" "ubuntu-noble-small" {
 
     # Packer HTTP Autoinstall Settings
     http_directory    = "http"
-    http_bind_address = "172.21.0.62"
-    http_port_min     = 8802
-    http_port_max     = 8802
+    http_bind_address = var.http_bind_address
+    http_port_min     = var.http_port
+    http_port_max     = var.http_port
+    
 
     # Packer SSH Communicator Settings
     communicator         = "ssh"
