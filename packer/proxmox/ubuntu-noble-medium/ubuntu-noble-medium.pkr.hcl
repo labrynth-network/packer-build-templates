@@ -1,4 +1,4 @@
-## Ubuntu Server Noble (24.04.x) Template - Small
+## Ubuntu Server Noble (24.04.x) Template - Medium
 ################################################################################### 
 ## Packer Definition to create an Ubuntu Server (Noble 24.04.x) Template on Proxmox
 
@@ -41,7 +41,7 @@ variable "ssh_username" {
 
 ## Resource Definiation for the VM Template
 ###########################################
-source "proxmox-iso" "ubuntu-noble-small" {
+source "proxmox-iso" "ubuntu-noble-medium" {
 
     # Proxmox Connection Settings
     proxmox_url              = var.proxmox_api_url
@@ -51,9 +51,9 @@ source "proxmox-iso" "ubuntu-noble-small" {
 
     # VM General Settings
     node                 = var.proxmox_node
-    vm_id                = "802"
-    vm_name              = "ubuntu-noble-small"
-    template_description = "Ubuntu Server (Noble 24.04.x) Template - Small"
+    vm_id                = "803"
+    vm_name              = "ubuntu-noble-medium"
+    template_description = "Ubuntu Server (Noble 24.04.x) Template - Medium"
 
     # VM OS Settings
     boot_iso {
@@ -70,7 +70,7 @@ source "proxmox-iso" "ubuntu-noble-small" {
     scsi_controller = "virtio-scsi-single"
 
     disks {
-        disk_size    = "20G"
+        disk_size    = "40G"
         format       = "raw"
         storage_pool = "Proxmox-VMs"
         type         = "scsi"
@@ -79,10 +79,10 @@ source "proxmox-iso" "ubuntu-noble-small" {
 
     # VM CPU Settings
     sockets = "1"
-    cores   = "1"
+    cores   = "2"
 
     # VM Memory Settings
-    memory = "2048"
+    memory = "4096"
 
     # VM Network Settings
     network_adapters {
@@ -125,8 +125,8 @@ source "proxmox-iso" "ubuntu-noble-small" {
 #############################################
 build {
 
-    name    = "ubuntu-noble-small"
-    sources = ["source.proxmox-iso.ubuntu-noble-small"]
+    name    = "ubuntu-noble-medium"
+    sources = ["source.proxmox-iso.ubuntu-noble-medium"]
 
     # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
