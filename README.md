@@ -94,7 +94,7 @@ ubuntu-noble-medium.pkr.hcl
   <tr>
     <td>ubuntu-noble-medium</td>
     <td>Ubuntu Server 24.04</td>
-    <td>1</td>
+    <td>2</td>
     <td>4GiB</td>
     <td>40GB</td>
     <td>Base server image</td>
@@ -102,7 +102,7 @@ ubuntu-noble-medium.pkr.hcl
   <tr>
     <td>ubuntu-noble-large</td>
     <td>Ubuntu Server 24.04</td>
-    <td>1</td>
+    <td>2</td>
     <td>8GiB</td>
     <td>60GB</td>
     <td>Base server image</td>
