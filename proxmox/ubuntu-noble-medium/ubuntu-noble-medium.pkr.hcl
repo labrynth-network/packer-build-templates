@@ -36,7 +36,12 @@ variable "proxmox_node" {
 
 variable "ssh_username" {
     type = string
-    description = "SSH username for the VM"
+    description = "SSH username for Packer SSH communicator"
+}
+
+variable "ssh_private_key_file" {
+    type = string
+    description = "Path to the SSH private key file for Packer SSH communicator"
 }
 
 ## Resource Definiation for the VM Template
@@ -117,7 +122,7 @@ source "proxmox-iso" "ubuntu-noble-medium" {
     # Packer SSH Communicator Settings
     communicator         = "ssh"
     ssh_username         = var.ssh_username
-    ssh_private_key_file = "~/.ssh/id_rsa"
+    ssh_private_key_file = var.ssh_private_key_file
     ssh_timeout          = "30m"
 }
 
