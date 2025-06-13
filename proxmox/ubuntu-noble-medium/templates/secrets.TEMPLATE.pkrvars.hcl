@@ -1,1 +1,0 @@
-ssh_password = "SSH_PASSWORD"

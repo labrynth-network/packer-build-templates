@@ -55,7 +55,7 @@ packer validate \
 --var-file=../global.secrets.pkrvars.hcl \
 --var-file="variables.pkrvars.hcl" \
 --var-file="secrets.pkrvars.hcl" \
-ubuntu-noble-medium.pkr.hcl
+template-ubuntu-noble.pkr.hcl
 ```
 
 ### Build Image
@@ -67,44 +67,5 @@ packer build \
 --var-file=../global.secrets.pkrvars.hcl \
 --var-file="variables.pkrvars.hcl" \
 --var-file="secrets.pkrvars.hcl" \
-ubuntu-noble-medium.pkr.hcl
+template-ubuntu-noble-medium.pkr.hcl
 ```
-
-## Available Templates
-
-### Proxmox
-
-<table>
-  <tr>
-	  <th>Template Name</th>
-	  <th>OS Version</th>
-	  <th>vCPU</th>
-	  <th>Memory</th>
-	  <th>Storage</th>
-	  <th>Notes</th>
-  </tr>
-  <tr>
-    <td>ubuntu-noble-small</td>
-    <td>Ubuntu Server 24.04</td>
-    <td>1</td>
-    <td>2GiB</td>
-    <td>20GB</td>
-    <td>Base server image</td>
-  </tr>
-  <tr>
-    <td>ubuntu-noble-medium</td>
-    <td>Ubuntu Server 24.04</td>
-    <td>2</td>
-    <td>4GiB</td>
-    <td>40GB</td>
-    <td>Base server image</td>
-  </tr>
-  <tr>
-    <td>ubuntu-noble-large</td>
-    <td>Ubuntu Server 24.04</td>
-    <td>2</td>
-    <td>8GiB</td>
-    <td>60GB</td>
-    <td>Base server image</td>
-  </tr>
-</table>
