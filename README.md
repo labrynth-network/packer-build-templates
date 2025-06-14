@@ -10,14 +10,14 @@ This repository contains Packer template definitions used to build base VM image
 
 ```
 ├── proxmox/
-│   ├── ubuntu-noble-medium/		           # All files related to a VM template
-│   │   ├── files/ 				   # Config files to be copied into the VM during provisioning
-│   │   ├── templates/				   # Example files for configuring the template and build process
+│   ├── template-ubuntu-noble/		   # All files related to a VM template
+│   │   ├── files/ 				           # Config files to be copied into the VM during provisioning
+│   │   ├── templates/				       # Example files for configuring the template and build process
 │   │	│    ├── meta-data.TEMPLATE
 │   │	│    ├── user-data.TEMPLATE
 │   │	│    ├── secrets.TEMPLATE.pkrvars.hcl
 │   │	│    └── variables.TEMPLATE.pkrvars.hcl
-│   │   └── ubuntu-noble-medium.pkr.hcl	           # Packer template definition
+│   │   └── template-ubuntu-noble.pkr.hcl	         # Packer template definition
 │   └── global.secrets.TEMPLATE.pkrvars.hcl        # Global variables/secrets
 ├── aws/
 ```
@@ -67,5 +67,5 @@ packer build \
 --var-file=../global.secrets.pkrvars.hcl \
 --var-file="variables.pkrvars.hcl" \
 --var-file="secrets.pkrvars.hcl" \
-template-ubuntu-noble-medium.pkr.hcl
+template-ubuntu-noble.pkr.hcl
 ```
